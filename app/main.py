@@ -1,14 +1,15 @@
 from fastapi import FastAPI
 from app.db import Base, engine
-from app.api import users
+from app.api import users, auth
 
 # Create DB tables
 Base.metadata.create_all(engine)
 
-app = FastAPI(title="Users API integration with SQLLite using SQLAlchemy", 
-              description="FastAPI Project to run User CRUD ops", 
-              version="1.0.0")
+app = FastAPI(title="Authenticated User API", 
+              description="FastAPI based implementation to authenticate, verify, login and perform CRUD operations on users", 
+              version="1.1.0")
 
 # Register Routers
 app.include_router(users.router)
+app.include_router(auth.router)
 
