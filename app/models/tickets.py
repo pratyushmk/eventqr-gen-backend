@@ -24,6 +24,6 @@ class Ticket(Base):
     checkin_time = Column(DateTime, nullable=False)
     checkin_count = Column(Integer, default=0)
 
-    users = relationship("User", back_populates="tickets")
-    events = relationship("Event", back_populates="tickets")
+    user = relationship("User", back_populates="tickets")
+    event = relationship("Event", back_populates="tickets")
 

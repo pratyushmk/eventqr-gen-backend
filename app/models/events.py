@@ -6,10 +6,10 @@ from app.db import Base
 class Event(Base):
     __tablename__ = "events"
 
-    event_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     name = Column(String(100), nullable=False)
     date = Column(DateTime, nullable=False)
     location = Column(String(100), nullable=False)
 
-    tickets = relationship("Ticket", back_populates="events")
+    tickets = relationship("Ticket", back_populates="event")
 

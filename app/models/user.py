@@ -15,4 +15,4 @@ class User(Base):
     hashed_pswd = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
 
-    tickets = relationship("Ticket", back_populates="users")
+    tickets = relationship("Ticket", back_populates="user")
