@@ -2,8 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-import enum
-
 # User Pydantic Models(Dataclass)
 class UserCreate(BaseModel):
     name: str
@@ -50,7 +48,7 @@ class EventResponse(BaseModel):
     location: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # Tickets PyDantic Models
 class TicketCreate(BaseModel):
@@ -63,10 +61,10 @@ class TicketResponse(BaseModel):
     event_id: int
     ticket_type: str
     quantity: int
-    status: enum
+    status: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class CheckInRequest(BaseModel):
     registration_id: int
