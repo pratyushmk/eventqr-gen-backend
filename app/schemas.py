@@ -1,7 +1,10 @@
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime
 
-# Pydantic Models(Dataclass)
+import enum
+
+# User Pydantic Models(Dataclass)
 class UserCreate(BaseModel):
     name: str
     age: int
@@ -33,3 +36,37 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: Optional[str] = None
+
+# Events PyDantic Models
+class EventCreate(BaseModel):
+    name: str
+    date: datetime
+    location: str
+
+class EventResponse(BaseModel):
+    id: int
+    name: str
+    date: datetime
+    location: str
+
+    class Config:
+        orm_mode = True
+
+# Tickets PyDantic Models
+class TicketCreate(BaseModel):
+    event_id: int
+    ticket_type: str
+    quantity: int
+
+class TicketResponse(BaseModel):
+    registration_id: int
+    event_id: int
+    ticket_type: str
+    quantity: int
+    status: enum
+
+    class Config:
+        orm_mode = True
+
+class CheckInRequest(BaseModel):
+    registration_id: int
