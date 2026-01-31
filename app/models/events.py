@@ -11,5 +11,5 @@ class Event(Base):
     date = Column(DateTime, nullable=False)
     location = Column(String(100), nullable=False)
 
-    tickets = relationship("Ticket", back_populates="event")
+    tickets = relationship("Ticket", back_populates="event", cascade="all, delete-orphan", passive_deletes=True)
 
