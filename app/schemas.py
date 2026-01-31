@@ -57,7 +57,7 @@ class TicketCreate(BaseModel):
     quantity: int
 
 class TicketResponse(BaseModel):
-    registration_id: int
+    registration_id: str
     event_id: int
     ticket_type: str
     quantity: int
@@ -67,4 +67,4 @@ class TicketResponse(BaseModel):
         from_attributes = True
 
 class CheckInRequest(BaseModel):
-    registration_id: int
+    registration_id: str
