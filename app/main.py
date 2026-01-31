@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from app.db import Base, engine
-from app.api import users, auth, events
-from app.models.user import User
-from app.models.events import Event
-from app.models.tickets import Ticket
+from app.api import users, auth, events, tickets
+# from app.models.user import User
+# from app.models.events import Event
+# from app.models.tickets import Ticket
 
 # Create DB tables
 Base.metadata.create_all(engine)
@@ -13,7 +13,8 @@ app = FastAPI(title="Authenticated User API",
               version="1.1.0")
 
 # Register Routers
-app.include_router(users.router)
 app.include_router(auth.router)
+app.include_router(users.router)
 app.include_router(events.router)
+app.include_router(tickets.router)
 
