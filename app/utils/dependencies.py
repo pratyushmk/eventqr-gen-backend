@@ -32,3 +32,12 @@ def get_current_active_user(current_user:User = Depends(get_current_user)):
                             detail="Inactive User"
                             )
     return current_user
+
+def get_admin_user(admin_user:User = Depends(get_current_active_user)):
+    
+    if not admin_user.role == 'Admin':
+        raise HTTPException(status_code=401,
+                            detail="You have to be an Admin to perform this operation"
+                            )
+    
+    return admin_user
