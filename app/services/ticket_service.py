@@ -21,8 +21,6 @@ def get_ticket(registration_id:str, db:Session):
     return ticket
 
 def create_ticket(ticket:TicketCreate, user_id:int, db:Session):
-    print(f'User_Id:{user_id}')
-    print(f'Event_Id:{ticket.event_id}')
 
     user = db.query(User).filter(User.id == user_id).first()
     
